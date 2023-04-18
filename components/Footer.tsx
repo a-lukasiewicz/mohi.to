@@ -12,9 +12,12 @@ const Footer = () => {
               </h1>
             </Link>
           </div>
-          <p className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
+          <Link
+            href="https://www.linkedin.com/in/adam--lukasiewicz/"
+            className="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right hover:underline"
+          >
             Created by: Adam Łukasiewicz
-          </p>
+          </Link>
         </div>
       </div>
     </footer>
