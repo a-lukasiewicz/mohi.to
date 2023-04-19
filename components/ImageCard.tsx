@@ -1,13 +1,15 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 interface ImageCardType {
+  id: string
   title: string
   imageURL: string
 }
 
-const ImageCard = ({ title, imageURL }: ImageCardType) => {
+const ImageCard = ({ id, title, imageURL }: ImageCardType) => {
   return (
-    <>
+    <Link href={`/photo/${id}`}>
       <Image
         src={imageURL}
         alt={title}
@@ -15,7 +17,7 @@ const ImageCard = ({ title, imageURL }: ImageCardType) => {
         height={500}
         className="rounded hover:scale-105 hover:cursor-pointer transition"
       />
-    </>
+    </Link>
   )
 }
 
