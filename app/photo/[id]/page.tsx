@@ -1,11 +1,16 @@
 'use client'
-import { setLocalStorage } from '@/helpers/localStorage'
+import {
+  checkLocalStorage,
+  removeFromLocalStorage,
+  setLocalStorage
+} from '@/helpers/localStorage'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [image, setImage] = useState<Image | null>(null)
+  const [isFavorite, setIsFavorite] = useState(false)
   const { id } = useParams()
 
   const getImageById = async (id: string) => {
@@ -22,6 +27,7 @@ export default function Home() {
 
   useEffect(() => {
     getImageById(id)
+    setIsFavorite(checkLocalStorage('favorites', id))
   }, [id])
 
   return (
@@ -41,12 +47,21 @@ export default function Home() {
       {image?.alt && <h1 className="text-2xl py-2">{image?.alt}</h1>}
 
       <div className="flex justify-center w-full px-4 lg:px-16">
-        <button
-          onClick={() => setLocalStorage('favorites', id)}
-          className="mainButton bg-gray-200 px-3 py-1 mr-3"
-        >
-          Add to favorites
-        </button>
+        {!isFavorite ? (
+          <button
+            onClick={() => setLocalStorage('favorites', id)}
+            className="mainButton bg-gray-200 px-3 py-1 mr-3"
+          >
+            Add to favorites
+          </button>
+        ) : (
+          <button
+            onClick={() => removeFromLocalStorage('favorites', id)}
+            className="mainButton bg-gray-200 px-3 py-1 mr-3"
+          >
+            Remove from favorites
+          </button>
+        )}
         <button className="mainButton bg-gray-200 px-3 py-1">Share</button>
       </div>
     </div>
