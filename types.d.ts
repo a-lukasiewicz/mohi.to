@@ -1,5 +1,5 @@
 interface Image {
-  id: number
+  id: string
   width: number
   height: number
   url: string
