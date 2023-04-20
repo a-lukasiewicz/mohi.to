@@ -7,6 +7,7 @@ import {
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function Home() {
   const [image, setImage] = useState<Image | null>(null)
@@ -30,6 +31,16 @@ export default function Home() {
     setIsFavorite(checkLocalStorage('favorites', id))
   }, [id])
 
+  const addFavorite = () => {
+    setLocalStorage('favorites', id)
+    toast.success('Photo added to favorites')
+  }
+
+  const removeFavorite = () => {
+    removeFromLocalStorage('favorites', id)
+    toast.success('Photo removed from favorites')
+  }
+
   return (
     <div className="flex flex-col items-center justify-center py-8">
       <h1>Photo page: {id}</h1>
@@ -44,19 +55,20 @@ export default function Home() {
           />
         )}
       </div>
+      <Toaster />
       {image?.alt && <h1 className="text-2xl py-2">{image?.alt}</h1>}
 
       <div className="flex justify-center w-full px-4 lg:px-16">
         {!isFavorite ? (
           <button
-            onClick={() => setLocalStorage('favorites', id)}
+            onClick={addFavorite}
             className="mainButton bg-gray-200 px-3 py-1 mr-3"
           >
             Add to favorites
           </button>
         ) : (
           <button
-            onClick={() => removeFromLocalStorage('favorites', id)}
+            onClick={removeFavorite}
             className="mainButton bg-gray-200 px-3 py-1 mr-3"
           >
             Remove from favorites

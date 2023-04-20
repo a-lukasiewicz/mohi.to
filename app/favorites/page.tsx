@@ -5,6 +5,7 @@ import { NoFavorites } from '@/components/Favorites'
 import ImageCard from '@/components/ImageCard'
 import { clearLocalStorage, getLocalStorageData } from '@/helpers/localStorage'
 import getImageById from '@/utils/getImageById'
+import { Toaster, toast } from 'react-hot-toast'
 
 export default function Home() {
   const [images, setImages] = useState<Image[]>([])
@@ -15,14 +16,20 @@ export default function Home() {
     setImages(data)
   })
 
+  const clearFavorites = () => {
+    clearLocalStorage('favorites')
+    toast.success('Successfully removed all favorites')
+  }
+
   return (
     <div className="flex justify-center py-8">
+      <Toaster />
       {!allFavorites.length ? (
         <NoFavorites />
       ) : (
         <div className="flex flex-col justify-center items-center">
           <button
-            onClick={() => clearLocalStorage('favorites')}
+            onClick={clearFavorites}
             className="mainButton bg-gray-200 px-3 py-1 mr-3 w-72"
           >
             Clear all favorites
