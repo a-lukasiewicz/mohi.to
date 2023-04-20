@@ -1,6 +1,6 @@
-const fetchByTitle = async (title: string) => {
+const fetchByTitle = async (title: string, perPage: number) => {
   const response = await fetch(
-    `https://api.pexels.com/v1/search?query=${title}&per_page=1`,
+    `https://api.pexels.com/v1/search?query=${title}&per_page=${perPage}`,
     {
       method: 'GET',
       headers: {

@@ -23,7 +23,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex justify-center py-8">
+    <div className="flex justify-center items-center h-full">
       <Toaster />
       {!allFavorites.length ? (
         <NoFavorites />
