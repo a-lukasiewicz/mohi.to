@@ -1,6 +1,6 @@
 import Header from '@/components/Header'
-import './globals.css'
 import Footer from '@/components/Footer'
+import './globals.css'
 
 export const metadata = {
   title: 'Adam Łukasiewicz - mohi.to',
