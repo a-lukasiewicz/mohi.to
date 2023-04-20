@@ -6,6 +6,7 @@ import ImageCard from '@/components/ImageCard'
 import { clearLocalStorage, getLocalStorageData } from '@/helpers/localStorage'
 import getImageById from '@/utils/getImageById'
 import { Toaster, toast } from 'react-hot-toast'
+import { LocalStorageKeys } from '@/src/types/types'
 
 export default function Home() {
   const [images, setImages] = useState<Image[]>([])

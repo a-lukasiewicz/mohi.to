@@ -4,6 +4,7 @@ import {
   removeFromLocalStorage,
   setLocalStorage
 } from '@/helpers/localStorage'
+import { LocalStorageKeys } from '@/src/types/types'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
