@@ -7,27 +7,39 @@ import { useEffect, useState } from 'react'
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('')
   const debouncedValue = useDebounce(searchValue, 500)
+  const [perPage, setPerPage] = useState(10)
 
-  const getImages = async (debouncedValue: string) => {
-    const images = await fetchByTitle(debouncedValue)
+  const getImages = async (debouncedValue: string, perPage: number) => {
+    const images = await fetchByTitle(debouncedValue, perPage)
     console.log(images)
   }
 
   useEffect(() => {
     if (!debouncedValue) return
 
-    getImages(debouncedValue)
-  }, [debouncedValue])
+    getImages(debouncedValue, perPage)
+  }, [debouncedValue, perPage])
 
   return (
-    <div className="w-full bg-blue-200 h-32 px-8 lg:px-32">
-      <div className="flex justify-center py-8">
+    <div className="w-full bg-blue-200 py-4 px-8 lg:px-32">
+      <div className="flex flex-col md:flex-row justify-center items-center py-8">
         <input
           type="text"
           onChange={event => setSearchValue(event.target.value)}
           placeholder="Search for image"
           className="w-full md:w-1/2 px-5 py-3 rounded outline-none"
         />
+        <div className="flex flex-row justify-center items-center mt-4 md:mt-0">
+          <h3 className="pl-4">Results per page:</h3>
+          <select
+            onChange={event => setPerPage(Number(event.target.value))}
+            className="ml-4 mr-8 w-24 lg:w-40 p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none"
+          >
+            <option>10</option>
+            <option>30</option>
+            <option>50</option>
+          </select>
+        </div>
       </div>
     </div>
   )
