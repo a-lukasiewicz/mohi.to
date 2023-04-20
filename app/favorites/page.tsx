@@ -9,7 +9,7 @@ import { Toaster, toast } from 'react-hot-toast'
 
 export default function Home() {
   const [images, setImages] = useState<Image[]>([])
-  const allFavorites: string[] = getLocalStorageData('favorites')
+  const allFavorites: string[] = getLocalStorageData(LocalStorageKeys.FAVORITES)
   const arrayOfPromises = allFavorites.map(fav => getImageById(fav))
 
   Promise.all(arrayOfPromises).then(data => {
@@ -17,7 +17,7 @@ export default function Home() {
   })
 
   const clearFavorites = () => {
-    clearLocalStorage('favorites')
+    clearLocalStorage(LocalStorageKeys.FAVORITES)
     toast.success('Successfully removed all favorites')
   }
 

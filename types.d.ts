@@ -20,3 +20,7 @@ interface Image {
   liked: boolean
   alt: string
 }
+
+enum LocalStorageKeys {
+  FAVORITES = 'favorites'
+}

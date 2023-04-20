@@ -28,16 +28,16 @@ export default function Home() {
 
   useEffect(() => {
     getImageById(id)
-    setIsFavorite(checkLocalStorage('favorites', id))
+    setIsFavorite(checkLocalStorage(LocalStorageKeys.FAVORITES, id))
   }, [id])
 
   const addFavorite = () => {
-    setLocalStorage('favorites', id)
+    setLocalStorage(LocalStorageKeys.FAVORITES, id)
     toast.success('Photo added to favorites')
   }
 
   const removeFavorite = () => {
-    removeFromLocalStorage('favorites', id)
+    removeFromLocalStorage(LocalStorageKeys.FAVORITES, id)
     toast.success('Photo removed from favorites')
   }
 
