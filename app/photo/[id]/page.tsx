@@ -4,6 +4,7 @@ import {
   removeFromLocalStorage,
   setLocalStorage
 } from '@/helpers/localStorage'
+import shareImage from '@/helpers/shareImage'
 import { LocalStorageKeys } from '@/src/types/types'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
@@ -75,7 +76,12 @@ export default function Home() {
             Remove from favorites
           </button>
         )}
-        <button className="mainButton bg-gray-200 px-3 py-1">Share</button>
+        <button
+          onClick={() => shareImage({ id })}
+          className="mainButton bg-gray-200 px-3 py-1"
+        >
+          Share
+        </button>
       </div>
     </div>
   )
