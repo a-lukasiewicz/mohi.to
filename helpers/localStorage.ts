@@ -1,9 +1,12 @@
 export const getLocalStorageData = (key: string) => {
-  return JSON.parse(localStorage.getItem(key) || '')
+  const elements: any = localStorage.getItem(key)
+
+  if (!elements) return []
+  return JSON.parse(elements)
 }
 
 export const checkLocalStorage = (key: string, id: string) => {
-  return getLocalStorageData(key).includes(id)
+  return getLocalStorageData(key)?.includes(id)
 }
 
 export const clearLocalStorage = (key: string) => {
