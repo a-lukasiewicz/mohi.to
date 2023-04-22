@@ -1,5 +1,5 @@
 'use client'
-import { Button } from '@/app/components/Buttons'
+import { Button } from '@/src/components/Buttons'
 import {
   checkLocalStorage,
   removeFromLocalStorage,

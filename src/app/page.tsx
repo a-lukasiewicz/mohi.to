@@ -1,8 +1,8 @@
 import { Inter } from 'next/font/google'
-import SearchBar from '@/app/components/SearchBar'
-import ImageCard from '@/app/components/images/ImageCard'
+import SearchBar from '@/src/components/SearchBar'
+import ImageCard from '@/src/components/images/ImageCard'
 import { useEffect, useState } from 'react'
-import Pagination from '@/app/components/Pagination'
+import Pagination from '@/src/components/Pagination'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,10 +22,8 @@ async function getImages(pageResults: number) {
   return data.photos
 }
 
-export default async function Home({ params: pageNumber }: any) {
+export default async function Home() {
   const images: Image[] = await getImages(20)
-
-  console.log(pageNumber)
 
   // const [images, setImages] = useState<Image[] | null>([])
 
@@ -51,7 +49,7 @@ export default async function Home({ params: pageNumber }: any) {
   return (
     <main>
       <SearchBar />
-      <div className="grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8">
+      <div className="imagesGrid">
         {images?.map((image, index) => {
           return (
             <ImageCard

@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { NoFavorites } from '@/app/components/Favorites'
-import ImageCard from '@/app/components/images/ImageCard'
+import { NoFavorites } from '@/src/components/Favorites'
+import ImageCard from '@/src/components/images/ImageCard'
 import {
   clearLocalStorage,
   getLocalStorageData
@@ -21,8 +21,12 @@ export default function Home() {
   })
 
   const clearFavorites = () => {
-    clearLocalStorage(LocalStorageKeys.FAVORITES)
-    toast.success('Successfully removed all favorites')
+    try {
+      clearLocalStorage(LocalStorageKeys.FAVORITES)
+      toast.success('Successfully removed all favorites')
+    } catch (error) {
+      if (error instanceof Error) toast.error(error.message)
+    }
   }
 
   return (
