@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ButtonWithIcon } from './Buttons'
+import { ButtonWithIcon } from '../Buttons'
 
 const Header = () => {
   return (
