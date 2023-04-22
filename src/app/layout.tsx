@@ -1,5 +1,6 @@
 import Header from '@/src/components/layout/Header'
 import Footer from '@/src/components/layout/Footer'
+import { ReduxProvider } from '../redux/Provider'
 import './globals.css'
 
 export const metadata = {
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex flex-col h-screen">
-        <Header />
-        <main className="grow">{children}</main>
-        <Footer />
+        <ReduxProvider>
+          <Header />
+          <main className="grow">{children}</main>
+          <Footer />
+        </ReduxProvider>
       </body>
     </html>
   )
