@@ -1,4 +1,5 @@
 'use client'
+import { Button } from '@/app/components/Buttons'
 import {
   checkLocalStorage,
   removeFromLocalStorage,
@@ -60,28 +61,12 @@ export default function Home() {
       <Toaster />
       {image?.alt && <h1 className="text-2xl py-2">{image?.alt}</h1>}
 
-      <div className="flex justify-center w-full px-4 lg:px-16">
-        {!isFavorite ? (
-          <button
-            onClick={addFavorite}
-            className="mainButton bg-gray-200 px-3 py-1 mr-3"
-          >
-            Add to favorites
-          </button>
-        ) : (
-          <button
-            onClick={removeFavorite}
-            className="mainButton bg-gray-200 px-3 py-1 mr-3"
-          >
-            Remove from favorites
-          </button>
-        )}
-        <button
-          onClick={() => shareImage({ id })}
-          className="mainButton bg-gray-200 px-3 py-1"
-        >
-          Share
-        </button>
+      <div className="flex justify-center w-full px-4 my-4 lg:px-16">
+        <Button
+          text={!isFavorite ? 'Add to favorites' : 'Remove from favorites'}
+          onClick={!isFavorite ? addFavorite : removeFavorite}
+        />
+        <Button text="Share image" onClick={() => shareImage({ id })} />
       </div>
     </div>
   )

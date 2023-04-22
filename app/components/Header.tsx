@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import { ButtonWithIcon } from './Buttons'
 
 const Header = () => {
   return (
@@ -12,27 +12,12 @@ const Header = () => {
                 mohi.to
               </h1>
             </Link>
-
             <p className="mt-1.5 text-sm text-gray-500">
               Zadanie rekrutacyjne - Adam Łukasiewicz
             </p>
           </div>
-
           <div className="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
-            <Link
-              href="/favorites"
-              className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-white px-5 py-3 text-gray-500 transition hover:text-gray-700 focus:outline-none focus:ring"
-              type="button"
-            >
-              <span className="text-sm font-medium">Favorites</span>
-              <Image
-                src="/heart.svg"
-                alt="Heart"
-                width={50}
-                height={50}
-                className="h-3 w-3"
-              />
-            </Link>
+            <ButtonWithIcon page="/favorites" image="heart" />
           </div>
         </div>
       </div>
