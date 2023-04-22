@@ -3,7 +3,10 @@
 import { useState } from 'react'
 import { NoFavorites } from '@/components/Favorites'
 import ImageCard from '@/components/ImageCard'
-import { clearLocalStorage, getLocalStorageData } from '@/helpers/localStorage'
+import {
+  clearLocalStorage,
+  getLocalStorageData
+} from '@/src/helpers/localStorage'
 import getImageById from '@/src/utils/getImageById'
 import { Toaster, toast } from 'react-hot-toast'
 import { LocalStorageKeys } from '@/src/types/types'

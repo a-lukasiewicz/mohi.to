@@ -3,8 +3,8 @@ import {
   checkLocalStorage,
   removeFromLocalStorage,
   setLocalStorage
-} from '@/helpers/localStorage'
-import shareImage from '@/helpers/shareImage'
+} from '@/src/helpers/localStorage'
+import shareImage from '@/src/helpers/shareImage'
 import { LocalStorageKeys } from '@/src/types/types'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
