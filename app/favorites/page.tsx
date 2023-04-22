@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { NoFavorites } from '@/components/Favorites'
-import ImageCard from '@/components/ImageCard'
+import { NoFavorites } from '@/app/components/Favorites'
+import ImageCard from '@/app/components/images/ImageCard'
 import {
   clearLocalStorage,
   getLocalStorageData

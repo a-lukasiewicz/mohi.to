@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .imagesGrid {
+    @apply grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8;
+  }
+
   .paginationArrow {
     @apply inline-flex h-8 w-8 items-center justify-center rounded border border-gray-100 rtl:rotate-180;
   }
