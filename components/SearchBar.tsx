@@ -1,7 +1,7 @@
 'use client'
 
 import useDebounce from '@/src/hooks/useDebounce'
-import fetchByTitle from '@/utils/fetchByTitle'
+import fetchByTitle from '@/src/utils/fetchByTitle'
 import { useEffect, useState } from 'react'
 
 const SearchBar = () => {
