@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useAppSelector, useAppDispatch } from '../redux/hooks'
-import { decrement, increment } from '../redux/features/pageSlice'
+import { prevPage, nextPage } from '../redux/features/pageSlice'
 
 const Pagination = () => {
   const currentPage = useAppSelector(state => state.pageReducer.currentPage)
@@ -13,7 +13,7 @@ const Pagination = () => {
     <div className="inline-flex items-center justify-center gap-1">
       {currentPage !== 1 && (
         <Link
-          onClick={() => dispatch(decrement())}
+          onClick={() => dispatch(prevPage())}
           href={`/page/${currentPage - 1}`}
           className="paginationArrow"
         >
@@ -24,7 +24,7 @@ const Pagination = () => {
         <h3>Page {currentPage}</h3>
       </div>
       <Link
-        onClick={() => dispatch(increment())}
+        onClick={() => dispatch(nextPage())}
         href={`/page/${currentPage + 1}`}
         className="paginationArrow"
       >

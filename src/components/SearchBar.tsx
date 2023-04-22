@@ -3,11 +3,14 @@
 import useDebounce from '@/src/hooks/useDebounce'
 import fetchByTitle from '@/src/utils/fetchByTitle'
 import { useEffect, useState } from 'react'
+import { useAppSelector, useAppDispatch } from '../redux/hooks'
+import { changeResultAmount } from '../redux/features/pageSlice'
 
 const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('')
   const debouncedValue = useDebounce(searchValue, 500)
-  const [perPage, setPerPage] = useState(10)
+  const perPage = useAppSelector(state => state.pageReducer.resultAmount)
+  const dispatch = useAppDispatch()
 
   const getImages = async (debouncedValue: string, perPage: number) => {
     const images = await fetchByTitle(debouncedValue, perPage)
@@ -32,7 +35,9 @@ const SearchBar = () => {
         <div className="flex flex-row justify-center items-center mt-4 md:mt-0">
           <h3 className="pl-4">Results per page:</h3>
           <select
-            onChange={event => setPerPage(Number(event.target.value))}
+            onChange={event =>
+              dispatch(changeResultAmount(Number(event.target.value)))
+            }
             className="ml-4 mr-8 w-24 lg:w-40 p-2.5 text-gray-500 bg-white border rounded-md shadow-sm outline-none appearance-none"
           >
             <option>10</option>
