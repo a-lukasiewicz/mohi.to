@@ -1,3 +1,11 @@
+export interface ImageApiResponse {
+  page: number
+  per_page: number
+  photos: Image[]
+  total_results: number
+  next_page: string
+}
+
 export interface Image {
   id: string
   width: number
