@@ -1,29 +1,24 @@
 'use client'
 
-import { useState } from 'react'
 import { NoFavorites } from '@/src/components/Favorites'
 import ImageCard from '@/src/components/images/ImageCard'
-import {
-  clearLocalStorage,
-  getLocalStorageData
-} from '@/src/helpers/localStorage'
-import getImageById from '@/src/utils/getImageById'
-import { Toaster, toast } from 'react-hot-toast'
-import { LocalStorageKeys } from '@/src/types/types'
+import useLocalStorage from '@/src/hooks/useLocalStorage'
+import { useGetImagesByIdQuery } from '@/src/redux/services/imageApi'
 import Image from 'next/image'
+import { Toaster, toast } from 'react-hot-toast'
 
 export default function Home() {
-  const [images, setImages] = useState<Image[]>([])
-  const allFavorites: string[] = getLocalStorageData(LocalStorageKeys.FAVORITES)
-  const arrayOfPromises = allFavorites.map(fav => getImageById(fav))
+  const [favoritesLocalStorage, setFavoritesLocalStorage] = useLocalStorage<
+    string[]
+  >('favorites', [])
 
-  Promise.all(arrayOfPromises).then(data => {
-    setImages(data)
+  const { data } = useGetImagesByIdQuery({
+    ids: favoritesLocalStorage
   })
 
   const clearFavorites = () => {
     try {
-      clearLocalStorage(LocalStorageKeys.FAVORITES)
+      setFavoritesLocalStorage([])
       toast.success('Successfully removed all favorites')
     } catch (error) {
       if (error instanceof Error) toast.error(error.message)
@@ -33,7 +28,7 @@ export default function Home() {
   return (
     <div className="flex justify-center items-center h-full">
       <Toaster />
-      {!allFavorites.length ? (
+      {!favoritesLocalStorage.length ? (
         <NoFavorites />
       ) : (
         <div className="flex flex-col justify-center items-center mt-4">
@@ -51,23 +46,22 @@ export default function Home() {
               className="h-5 w-5"
             />
           </button>
-          <div className="grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8">
-            {images?.map((image, index) => {
-              return (
-                <ImageCard
-                  id={image?.id}
-                  title={image?.alt}
-                  imageURL={image?.src.original}
-                  key={index}
-                />
-              )
-            })}
-          </div>
+          {data && (
+            <div className="grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8">
+              {data?.map((image, index) => {
+                return (
+                  <ImageCard
+                    id={image?.id}
+                    title={image?.alt}
+                    imageURL={image?.src.original}
+                    key={index}
+                  />
+                )
+              })}
+            </div>
+          )}
         </div>
       )}
     </div>
   )
-}
-
-{
 }
