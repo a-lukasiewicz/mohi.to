@@ -1,3 +1,5 @@
+'use client'
+
 export const getLocalStorageData = (key: string) => {
   const elements: any = window.localStorage.getItem(key)
 
