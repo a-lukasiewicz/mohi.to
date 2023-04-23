@@ -1,10 +1,11 @@
 'use client'
 
 export const getLocalStorageData = (key: string) => {
-  const elements: any = localStorage.getItem(key)
-
-  if (!elements) return []
-  return JSON.parse(elements)
+  if (typeof window !== 'undefined') {
+    const elements: any = localStorage.getItem(key)
+    if (!elements) return []
+    return JSON.parse(elements)
+  }
 }
 
 export const checkLocalStorage = (key: string, id: string) => {
@@ -12,21 +13,25 @@ export const checkLocalStorage = (key: string, id: string) => {
 }
 
 export const clearLocalStorage = (key: string) => {
-  localStorage.setItem(key, JSON.stringify([]))
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(key, JSON.stringify([]))
+  }
 }
 
 export const setLocalStorage = (key: string, id: string) => {
   const data: string[] = getLocalStorageData(key)
 
-  if (!data) {
-    return localStorage.setItem(key, JSON.stringify([id] as string[]))
-  }
+  if (typeof window !== 'undefined') {
+    if (!data) {
+      return localStorage.setItem(key, JSON.stringify([id] as string[]))
+    }
 
-  if (data.includes(id)) {
-    return
-  }
+    if (data.includes(id)) {
+      return
+    }
 
-  localStorage.setItem(key, JSON.stringify([...data, id]))
+    localStorage.setItem(key, JSON.stringify([...data, id]))
+  }
 }
 
 export const removeFromLocalStorage = (key: string, id: string) => {
@@ -37,5 +42,8 @@ export const removeFromLocalStorage = (key: string, id: string) => {
   }
 
   const filteredData = data.filter(fav => fav !== id)
-  localStorage.setItem(key, JSON.stringify(filteredData))
+
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(key, JSON.stringify(filteredData))
+  }
 }
