@@ -1,4 +1,5 @@
 import { ImageApiResponse } from '@/src/types/types'
+import getImageById from '@/src/utils/getImageById'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const imagesApi = createApi({
@@ -26,8 +27,23 @@ export const imagesApi = createApi({
     }),
     getImageById: builder.query<Image, { id: string }>({
       query: ({ id }) => `photos/${id}`
+    }),
+    getImagesById: builder.query<Image[], { ids: string[] }>({
+      queryFn: async ({ ids }) => {
+        const promises = ids.map(async (id: string) => {
+          return await getImageById(id)
+        })
+
+        return Promise.all(promises).then(data => {
+          return { data }
+        })
+      }
     })
   })
 })
 
-export const { useGetImagesQuery, useGetImageByIdQuery } = imagesApi
+export const {
+  useGetImagesQuery,
+  useGetImageByIdQuery,
+  useGetImagesByIdQuery
+} = imagesApi
