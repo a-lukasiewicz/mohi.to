@@ -11,3 +11,10 @@ App is hosted by Vercel and it's available here: [mohi.to - Live preview](https:
 3. Visit [pexels.com](https://www.pexels.com/api/), register to get sign up key.
 4. Rename `.env-sample` to `.env` and paste API_KEY.
 5. Run project with command: `npm run dev`
+
+# Technology used
+- Next.js `13.3.0`
+- React `18.2.0`
+- TypeScript
+- Redux Toolkit
+- TailwindCSS
