@@ -2,7 +2,7 @@
 
 # Live Preview
 
-App is hosted by Vercel and it's available here: [pexels.com](https://www.pexels.com/api/)
+App is hosted by Vercel and it's available here: [mohi.to - Live preview](https://mohi-to.vercel.app/)
 
 # How to start using app locally?
 
