@@ -20,6 +20,9 @@ export const pageDetails = createSlice({
     prevPage: state => {
       state.currentPage -= 1
     },
+    resetPageNumber: state => {
+      state.currentPage = 1
+    },
     changeResultAmount: (state, action: PayloadAction<number>) => {
       console.log(action.payload)
       state.resultAmount = action.payload
@@ -27,5 +30,6 @@ export const pageDetails = createSlice({
   }
 })
 
-export const { prevPage, nextPage, changeResultAmount } = pageDetails.actions
+export const { prevPage, nextPage, resetPageNumber, changeResultAmount } =
+  pageDetails.actions
 export default pageDetails.reducer
