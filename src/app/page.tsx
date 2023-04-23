@@ -13,6 +13,7 @@ export default function Home() {
   const perPage = useAppSelector(state => state.pageReducer.resultAmount)
 
   const { isLoading, isFetching, data, error } = useGetImagesQuery({
+    page: 1,
     resultAmount: perPage
   })
 

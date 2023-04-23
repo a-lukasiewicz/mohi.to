@@ -13,8 +13,12 @@ export const imagesApi = createApi({
     mode: 'cors'
   }),
   endpoints: builder => ({
-    getImages: builder.query<ImageApiResponse, { resultAmount: number }>({
-      query: ({ resultAmount }) => `curated?per_page=${resultAmount}`
+    getImages: builder.query<
+      ImageApiResponse,
+      { page: number; resultAmount: number }
+    >({
+      query: ({ page, resultAmount }) =>
+        `curated?page=${page}&per_page=${resultAmount}`
     }),
     getImageById: builder.query<ImageApiResponse, { id: string }>({
       query: ({ id }) => `photos/${id}`
