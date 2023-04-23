@@ -2,22 +2,24 @@
 import { Button } from '@/src/components/Buttons'
 import Error from '@/src/components/Error'
 import Spinner from '@/src/components/Spinner'
-import {
-  checkLocalStorage,
-  removeFromLocalStorage,
-  setLocalStorage
-} from '@/src/helpers/localStorage'
 import shareImage from '@/src/helpers/shareImage'
+import useLocalStorage from '@/src/hooks/useLocalStorage'
 import { useGetImageByIdQuery } from '@/src/redux/services/imageApi'
 import { LocalStorageKeys } from '@/src/types/types'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 
 export default function Home() {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const [favoritesLocalStorage, setFavoritesLocalStorage] = useLocalStorage<
+    string[]
+  >(LocalStorageKeys.FAVORITES, [])
+
   const { id } = useParams()
+  const [isFavorite, setIsFavorite] = useState(
+    favoritesLocalStorage.includes(id)
+  )
 
   const {
     isLoading,
@@ -27,6 +29,21 @@ export default function Home() {
   } = useGetImageByIdQuery({
     id
   })
+
+  useEffect(() => {
+    setIsFavorite(favoritesLocalStorage.includes(id))
+  }, [id, favoritesLocalStorage])
+
+  const addFavorite = () => {
+    setFavoritesLocalStorage([...favoritesLocalStorage, id])
+    toast.success('Photo added to favorites')
+  }
+
+  const removeFavorite = () => {
+    const filteredData = favoritesLocalStorage.filter(fav => fav !== id)
+    setFavoritesLocalStorage(filteredData)
+    toast.success('Photo removed from favorites')
+  }
 
   if (isLoading || isFetching) {
     return (
@@ -38,16 +55,6 @@ export default function Home() {
 
   if (error) {
     return <Error />
-  }
-
-  const addFavorite = () => {
-    setLocalStorage(LocalStorageKeys.FAVORITES, id)
-    toast.success('Photo added to favorites')
-  }
-
-  const removeFavorite = () => {
-    removeFromLocalStorage(LocalStorageKeys.FAVORITES, id)
-    toast.success('Photo removed from favorites')
   }
 
   return (
