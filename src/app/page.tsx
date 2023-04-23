@@ -1,6 +1,5 @@
 'use client'
 
-import { Inter } from 'next/font/google'
 import ImageCard from '@/src/components/images/ImageCard'
 import Pagination from '@/src/components/Pagination'
 import { useGetImagesQuery } from '../redux/services/imageApi'
@@ -10,8 +9,6 @@ import useDebounce from '../hooks/useDebounce'
 import SelectBar from '@/src/components/SelectBar'
 import Spinner from '../components/Spinner'
 import Error from '../components/Error'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState('')

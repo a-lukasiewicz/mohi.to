@@ -1,6 +1,5 @@
 'use client'
 
-import { Inter } from 'next/font/google'
 import ImageCard from '@/src/components/images/ImageCard'
 import Pagination from '@/src/components/Pagination'
 import { useGetImagesQuery } from '@/src/redux/services/imageApi'
@@ -9,9 +8,7 @@ import SelectBar from '@/src/components/SelectBar'
 import Spinner from '@/src/components/Spinner'
 import Error from '@/src/components/Error'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home({ params: pageNumber }: any) {
+export default function Home() {
   const perPage = useAppSelector(state => state.pageReducer.resultAmount)
   const currentPage = useAppSelector(state => state.pageReducer.currentPage)
 
