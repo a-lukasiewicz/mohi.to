@@ -35,7 +35,7 @@ export default function Home() {
       {!allFavorites.length ? (
         <NoFavorites />
       ) : (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center mt-4">
           <button
             onClick={clearFavorites}
             className="mainButton bg-gray-200 px-3 py-1 mr-3 w-72"

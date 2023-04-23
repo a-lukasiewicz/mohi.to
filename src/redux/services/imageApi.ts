@@ -24,7 +24,7 @@ export const imagesApi = createApi({
         return `search?query=${query}&per_page=${resultAmount}`
       }
     }),
-    getImageById: builder.query<ImageApiResponse, { id: string }>({
+    getImageById: builder.query<Image, { id: string }>({
       query: ({ id }) => `photos/${id}`
     })
   })
