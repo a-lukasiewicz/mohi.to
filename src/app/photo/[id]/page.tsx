@@ -59,7 +59,7 @@ export default function Home() {
             alt={image?.alt ?? image?.photographer}
             width={500}
             height={500}
-            className="rounded hover:scale-105 hover:cursor-pointer transition"
+            className="rounded hover:scale-[102%] hover:cursor-pointer transition"
           />
         )}
       </div>

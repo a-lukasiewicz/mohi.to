@@ -10,6 +10,7 @@ import {
 import getImageById from '@/src/utils/getImageById'
 import { Toaster, toast } from 'react-hot-toast'
 import { LocalStorageKeys } from '@/src/types/types'
+import Image from 'next/image'
 
 export default function Home() {
   const [images, setImages] = useState<Image[]>([])
@@ -38,9 +39,17 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center mt-4">
           <button
             onClick={clearFavorites}
-            className="mainButton bg-gray-200 px-3 py-1 mr-3 w-72"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 bg-white px-5 py-3 text-gray-500 transition hover:text-gray-700 focus:outline-none focus:ring"
+            type="button"
           >
-            Clear all favorites
+            <span className="text-sm font-medium">Clear all favorites</span>
+            <Image
+              src="/trash.svg"
+              alt="Trash"
+              width={50}
+              height={50}
+              className="h-5 w-5"
+            />
           </button>
           <div className="grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8">
             {images?.map((image, index) => {
