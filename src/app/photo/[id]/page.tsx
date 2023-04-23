@@ -1,5 +1,7 @@
 'use client'
 import { Button } from '@/src/components/Buttons'
+import Error from '@/src/components/Error'
+import Spinner from '@/src/components/Spinner'
 import {
   checkLocalStorage,
   removeFromLocalStorage,
@@ -25,6 +27,18 @@ export default function Home() {
   } = useGetImageByIdQuery({
     id
   })
+
+  if (isLoading || isFetching) {
+    return (
+      <div className="flex justify-center">
+        <Spinner />
+      </div>
+    )
+  }
+
+  if (error) {
+    return <Error />
+  }
 
   const addFavorite = () => {
     setLocalStorage(LocalStorageKeys.FAVORITES, id)

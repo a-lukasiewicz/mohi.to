@@ -8,6 +8,8 @@ import { useAppSelector } from '../redux/hooks'
 import { useEffect, useState } from 'react'
 import useDebounce from '../hooks/useDebounce'
 import SelectBar from '@/src/components/SelectBar'
+import Spinner from '../components/Spinner'
+import Error from '../components/Error'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,6 +28,18 @@ export default function Home() {
   useEffect(() => {
     refetch()
   }, [refetch, debouncedValue])
+
+  if (isLoading || isFetching) {
+    return (
+      <div className="flex justify-center">
+        <Spinner />
+      </div>
+    )
+  }
+
+  if (error) {
+    return <Error />
+  }
 
   return (
     <main>

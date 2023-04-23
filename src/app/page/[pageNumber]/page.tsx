@@ -6,6 +6,8 @@ import Pagination from '@/src/components/Pagination'
 import { useGetImagesQuery } from '@/src/redux/services/imageApi'
 import { useAppSelector } from '@/src/redux/hooks'
 import SelectBar from '@/src/components/SelectBar'
+import Spinner from '@/src/components/Spinner'
+import Error from '@/src/components/Error'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,6 +20,18 @@ export default function Home({ params: pageNumber }: any) {
     resultAmount: perPage,
     query: ''
   })
+
+  if (isLoading || isFetching) {
+    return (
+      <div className="flex justify-center">
+        <Spinner />
+      </div>
+    )
+  }
+
+  if (error) {
+    return <Error />
+  }
 
   return (
     <main>
