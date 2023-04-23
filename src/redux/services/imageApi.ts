@@ -15,10 +15,14 @@ export const imagesApi = createApi({
   endpoints: builder => ({
     getImages: builder.query<
       ImageApiResponse,
-      { page: number; resultAmount: number }
+      { page: number; resultAmount: number; query: string }
     >({
-      query: ({ page, resultAmount }) =>
-        `curated?page=${page}&per_page=${resultAmount}`
+      query: ({ page, resultAmount, query }) => {
+        if (!query) {
+          return `curated?page=${page}&per_page=${resultAmount}`
+        }
+        return `search?query=${query}&per_page=${resultAmount}`
+      }
     }),
     getImageById: builder.query<ImageApiResponse, { id: string }>({
       query: ({ id }) => `photos/${id}`

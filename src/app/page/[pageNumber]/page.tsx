@@ -1,12 +1,11 @@
 'use client'
 
 import { Inter } from 'next/font/google'
-import SearchBar from '@/src/components/SearchBar'
 import ImageCard from '@/src/components/images/ImageCard'
-import { useEffect, useState } from 'react'
 import Pagination from '@/src/components/Pagination'
 import { useGetImagesQuery } from '@/src/redux/services/imageApi'
 import { useAppSelector } from '@/src/redux/hooks'
+import SelectBar from '@/src/components/SelectBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,12 +15,16 @@ export default function Home({ params: pageNumber }: any) {
 
   const { isLoading, isFetching, data, error } = useGetImagesQuery({
     page: currentPage,
-    resultAmount: perPage
+    resultAmount: perPage,
+    query: ''
   })
 
   return (
     <main>
-      <SearchBar />
+      <div className="w-full bg-blue-200 py-4 px-8 lg:px-32">
+        <div className="flex flex-col md:flex-row justify-center items-center"></div>
+        <SelectBar />
+      </div>
       <div className="grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8">
         {data?.photos.map((image, index) => {
           return (
