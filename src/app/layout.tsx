@@ -6,7 +6,23 @@ import './globals.css'
 
 export const metadata = {
   title: 'Adam Łukasiewicz - mohi.to',
-  description: 'Recruitment task'
+  description: 'Recruitment task - Adam Łukasiewicz',
+  generator: 'Next.js',
+  keywords: ['Next.js', 'React', 'TypeScript', 'mohi.to'],
+  authors: [
+    {
+      name: 'Adam Łukasiewicz',
+      url: 'https://www.linkedin.com/in/adam--lukasiewicz/'
+    }
+  ],
+  openGraph: {
+    title: 'Adam Łukasiewicz - mohi.to',
+    description: 'Recruitment task - Adam Łukasiewicz',
+    url: 'https://mohi-to.vercel.app/',
+    siteName: 'mohi-to',
+    locale: 'en-US',
+    type: 'website'
+  }
 }
 
 const inter = Inter({ subsets: ['latin'] })

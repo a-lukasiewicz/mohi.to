@@ -26,7 +26,7 @@ const Pagination = () => {
         </Link>
       )}
       <div className="px-4">
-        <h3>Page {currentPage}</h3>
+        <p>Page {currentPage}</p>
       </div>
       <Link
         onClick={() => dispatch(nextPage())}

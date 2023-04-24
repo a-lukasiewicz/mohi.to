@@ -16,7 +16,7 @@ const SelectBar = () => {
 
   return (
     <div className="flex flex-row justify-center items-center mt-4 md:mt-0">
-      <h3 className="pl-4">Results per page:</h3>
+      <p className="pl-4">Results per page:</p>
       <select
         defaultValue={perPage}
         onChange={event => onChangeMethod(event)}

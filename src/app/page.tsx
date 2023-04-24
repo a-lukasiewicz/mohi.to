@@ -54,7 +54,7 @@ export default function Home() {
             return (
               <ImageCard
                 id={image?.id}
-                title={image?.alt}
+                title={image?.alt || image?.photographer}
                 imageURL={image?.src.original}
                 key={index}
               />
