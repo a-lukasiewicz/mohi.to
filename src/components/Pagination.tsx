@@ -9,12 +9,17 @@ const Pagination = () => {
   const currentPage = useAppSelector(state => state.pageReducer.currentPage)
   const dispatch = useAppDispatch()
 
+  const prevPageConditions = () => {
+    if (currentPage === 2) return '/'
+    return `/page/${currentPage - 1}`
+  }
+
   return (
     <div className="inline-flex items-center justify-center gap-1">
       {currentPage !== 1 && (
         <Link
           onClick={() => dispatch(prevPage())}
-          href={`/page/${currentPage - 1}`}
+          href={prevPageConditions()}
           className="paginationArrow"
         >
           <Image src="/prevPage.svg" alt="Prev Page" width={15} height={15} />
