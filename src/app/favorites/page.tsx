@@ -47,7 +47,7 @@ export default function Home() {
             />
           </button>
           {data && (
-            <div className="grid grid-cols-1 grid-flow-row place-items-center md:grid-cols-2 lg:grid-cols-3 gap-8 bg-white px-4 lg:px-16 py-8">
+            <div className="imagesGrid">
               {data?.map((image, index) => {
                 return (
                   <ImageCard

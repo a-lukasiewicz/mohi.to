@@ -8,7 +8,7 @@ const shareImage = async ({ id }: { id: string }) => {
   try {
     await navigator.share({
       title: 'mohi.to - Image shared',
-      url: `https://google.com/photo/${id}`
+      url: `https://mohi-to.vercel.app/photo/${id}`
     })
     toast.success('Image shared')
   } catch (error) {

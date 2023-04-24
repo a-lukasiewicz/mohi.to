@@ -24,7 +24,6 @@ export const pageDetails = createSlice({
       state.currentPage = 1
     },
     changeResultAmount: (state, action: PayloadAction<number>) => {
-      console.log(action.payload)
       state.resultAmount = action.payload
     }
   }

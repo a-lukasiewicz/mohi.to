@@ -1,6 +1,7 @@
 import { ImageApiResponse } from '@/src/types/types'
 import getImageById from '@/src/utils/getImageById'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { Image } from '@/src/types/types'
 
 export const imagesApi = createApi({
   reducerPath: 'imagesApi',
