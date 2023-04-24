@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ButtonWithIcon } from '../Buttons'
+import { ButtonWithIcon } from '@/src/components/Buttons'
 import { useAppDispatch } from '@/src/redux/hooks'
 import { resetPageNumber } from '@/src/redux/features/pageSlice'
 

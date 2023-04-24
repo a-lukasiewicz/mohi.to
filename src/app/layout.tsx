@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import Header from '@/src/components/layout/Header'
 import Footer from '@/src/components/layout/Footer'
-import { ReduxProvider } from '../redux/Provider'
+import { ReduxProvider } from '@/src/redux/Provider'
 import './globals.css'
 
 export const metadata = {

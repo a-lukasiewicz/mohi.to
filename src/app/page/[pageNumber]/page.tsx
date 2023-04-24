@@ -5,8 +5,8 @@ import Pagination from '@/src/components/Pagination'
 import { useGetImagesQuery } from '@/src/redux/services/imageApi'
 import { useAppSelector } from '@/src/redux/hooks'
 import SelectBar from '@/src/components/SelectBar'
-import Spinner from '@/src/components/Spinner'
-import Error from '@/src/components/Error'
+import Spinner from '@/src/components/layout/Spinner'
+import Error from '@/src/components/layout/Error'
 import { Toaster } from 'react-hot-toast'
 
 export default function Home() {

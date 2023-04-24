@@ -2,8 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useAppSelector, useAppDispatch } from '../redux/hooks'
-import { prevPage, nextPage } from '../redux/features/pageSlice'
+import { useAppSelector, useAppDispatch } from '@/src/redux/hooks'
+import { prevPage, nextPage } from '@/src/redux/features/pageSlice'
 
 const Pagination = () => {
   const currentPage = useAppSelector(state => state.pageReducer.currentPage)

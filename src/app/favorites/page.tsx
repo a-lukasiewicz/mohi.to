@@ -1,7 +1,7 @@
 'use client'
 
-import { NoFavorites } from '@/src/components/Favorites'
 import ImageCard from '@/src/components/images/ImageCard'
+import NoFavorites from '@/src/components/layout/NoFavorites'
 import useLocalStorage from '@/src/hooks/useLocalStorage'
 import { useGetImagesByIdQuery } from '@/src/redux/services/imageApi'
 import Image from 'next/image'

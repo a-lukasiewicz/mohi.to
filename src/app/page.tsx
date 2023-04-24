@@ -2,13 +2,13 @@
 
 import ImageCard from '@/src/components/images/ImageCard'
 import Pagination from '@/src/components/Pagination'
-import { useGetImagesQuery } from '../redux/services/imageApi'
-import { useAppSelector } from '../redux/hooks'
+import { useGetImagesQuery } from '@/src/redux/services/imageApi'
+import { useAppSelector } from '@/src/redux/hooks'
 import { useEffect, useState } from 'react'
-import useDebounce from '../hooks/useDebounce'
+import useDebounce from '@/src/hooks/useDebounce'
 import SelectBar from '@/src/components/SelectBar'
-import Spinner from '../components/Spinner'
-import Error from '../components/Error'
+import Spinner from '@/src/components/layout/Spinner'
+import Error from '@/src/components/layout/Error'
 import { Toaster } from 'react-hot-toast'
 
 export default function Home() {

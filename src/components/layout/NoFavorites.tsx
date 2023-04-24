@@ -1,4 +1,4 @@
-export const NoFavorites = () => (
+const NoFavorites = () => (
   <div className="flex flex-col grow items-center justify-center h-full bg-white">
     <div className="flex items-center justify-center flex-1">
       <div className="max-w-xl px-4 py-8 mx-auto text-center">
@@ -10,3 +10,5 @@ export const NoFavorites = () => (
     </div>
   </div>
 )
+
+export default NoFavorites

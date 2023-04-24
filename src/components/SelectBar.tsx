@@ -1,8 +1,8 @@
 'use client'
 
 import { ChangeEvent } from 'react'
-import { changeResultAmount } from '../redux/features/pageSlice'
-import { useAppDispatch, useAppSelector } from '../redux/hooks'
+import { changeResultAmount } from '@/src/redux/features/pageSlice'
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks'
 import { toast } from 'react-hot-toast'
 
 const SelectBar = () => {
