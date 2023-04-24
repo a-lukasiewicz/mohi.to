@@ -7,6 +7,7 @@ import { useAppSelector } from '@/src/redux/hooks'
 import SelectBar from '@/src/components/SelectBar'
 import Spinner from '@/src/components/Spinner'
 import Error from '@/src/components/Error'
+import { Toaster } from 'react-hot-toast'
 
 export default function Home() {
   const { resultAmount: perPage, currentPage } = useAppSelector(
@@ -50,6 +51,7 @@ export default function Home() {
       <div className="flex justify-center py-8">
         <Pagination />
       </div>
+      <Toaster />
     </main>
   )
 }

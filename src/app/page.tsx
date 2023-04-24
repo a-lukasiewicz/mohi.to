@@ -9,6 +9,7 @@ import useDebounce from '../hooks/useDebounce'
 import SelectBar from '@/src/components/SelectBar'
 import Spinner from '../components/Spinner'
 import Error from '../components/Error'
+import { Toaster } from 'react-hot-toast'
 
 export default function Home() {
   const [searchValue, setSearchValue] = useState('')
@@ -64,6 +65,7 @@ export default function Home() {
       <div className="flex justify-center py-8">
         <Pagination />
       </div>
+      <Toaster />
     </main>
   )
 }
