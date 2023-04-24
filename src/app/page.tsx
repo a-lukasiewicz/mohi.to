@@ -26,14 +26,6 @@ export default function Home() {
     refetch()
   }, [refetch, debouncedValue])
 
-  if (isLoading || isFetching) {
-    return (
-      <div className="flex justify-center">
-        <Spinner />
-      </div>
-    )
-  }
-
   if (error) {
     return <Error />
   }
@@ -51,18 +43,24 @@ export default function Home() {
           <SelectBar />
         </div>
       </div>
-      <div className="imagesGrid">
-        {data?.photos?.map((image, index) => {
-          return (
-            <ImageCard
-              id={image?.id}
-              title={image?.alt}
-              imageURL={image?.src.original}
-              key={index}
-            />
-          )
-        })}
-      </div>
+      {isLoading || isFetching ? (
+        <div className="flex justify-center">
+          <Spinner />
+        </div>
+      ) : (
+        <div className="imagesGrid">
+          {data?.photos?.map((image, index) => {
+            return (
+              <ImageCard
+                id={image?.id}
+                title={image?.alt}
+                imageURL={image?.src.original}
+                key={index}
+              />
+            )
+          })}
+        </div>
+      )}
       <div className="flex justify-center py-8">
         <Pagination />
       </div>
