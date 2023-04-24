@@ -64,6 +64,7 @@ export default function Home() {
           <Image
             src={image?.src?.original}
             alt={image?.alt ?? image?.photographer}
+            loading="lazy"
             width={500}
             height={500}
             className="rounded hover:scale-[102%] hover:cursor-pointer transition"

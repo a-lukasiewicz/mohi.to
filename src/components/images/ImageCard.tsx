@@ -15,7 +15,8 @@ const ImageCard = ({ id, title, imageURL }: ImageCardType) => {
         alt={title}
         width={500}
         height={500}
-        className="rounded  hover:scale-[102%] hover:cursor-pointer transition"
+        loading="lazy"
+        className="rounded hover:scale-[102%] hover:cursor-pointer transition"
       />
     </Link>
   )

@@ -43,6 +43,7 @@ export default function Home() {
               alt="Trash"
               width={50}
               height={50}
+              loading="lazy"
               className="h-5 w-5"
             />
           </button>
